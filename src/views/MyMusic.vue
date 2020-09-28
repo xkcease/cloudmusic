@@ -25,7 +25,7 @@ export default {
     padding-top: 100px;
 
     .bg,
-    .btn {
+    .bg .btn {
         background: url(../assets/mymusic.png) no-repeat;
     }
 
