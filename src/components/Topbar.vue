@@ -9,7 +9,10 @@
                         </div>
                     </a-col>
                     <a-col :span="9">
-                        <span class="arrow" :style="{ left: arrowState}"></span>
+                        <span
+                            class="arrow"
+                            :style="{ left: arrowState }"
+                        ></span>
                         <a-menu class="m-menu" mode="horizontal">
                             <a-menu-item
                                 class="m-item"
@@ -19,19 +22,30 @@
                                 :class="{
                                     active: mainItemState(mainItem.name)
                                 }"
-                            >{{ mainItem.text }}</a-menu-item>
+                                >{{ mainItem.text }}</a-menu-item
+                            >
                         </a-menu>
                         <span class="hot"></span>
                     </a-col>
                     <a-col :span="6">
-                        <a-input class="search" placeholder="音乐/视频/电台/用户">
+                        <a-input
+                            class="search"
+                            placeholder="音乐/视频/电台/用户"
+                        >
                             <a-icon slot="prefix" type="search" />
                         </a-input>
-                        <a-button class="btn" type="default" shape="round" ghost>创作者中心</a-button>
+                        <a-button class="btn" type="default" shape="round" ghost
+                            >创作者中心</a-button
+                        >
                         <a class="link" href="#">登录</a>
                     </a-col>
                 </a-row>
-                <a-row class="sub-bar" type="flex" justify="center" :gutter="10">
+                <a-row
+                    class="sub-bar"
+                    type="flex"
+                    justify="center"
+                    :gutter="10"
+                >
                     <a-col v-show="subMenuState" :span="16" :offset="3">
                         <a-menu class="sub-menu" mode="horizontal">
                             <a-menu-item
@@ -41,13 +55,20 @@
                                 @click="subItemChange(subItem.name)"
                             >
                                 <span
-                                    :class="{ active: subItemState(subItem.name) }"
-                                >{{ subItem.text }}</span>
+                                    :class="{
+                                        active: subItemState(subItem.name)
+                                    }"
+                                    >{{ subItem.text }}</span
+                                >
                             </a-menu-item>
                         </a-menu>
                         <span class="copyright"></span>
                     </a-col>
-                    <a-col v-show="!subMenuState" class="no-sub" :span="24"></a-col>
+                    <a-col
+                        v-show="!subMenuState"
+                        class="no-sub"
+                        :span="24"
+                    ></a-col>
                 </a-row>
             </a-layout-header>
         </a-layout>
