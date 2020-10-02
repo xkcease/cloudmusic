@@ -70,7 +70,7 @@ export default {
         flex-shrink: 0;
 
         .arrow {
-            background: url(../assets/banner.png) no-repeat;
+            background: url(../../assets/banner.png) no-repeat;
         }
 
         .l-arrow {
@@ -113,7 +113,7 @@ export default {
 
     .download,
     .download .btn {
-        background: url(../assets/download.png) no-repeat;
+        background: url(../../assets/download.png) no-repeat;
     }
 
     .download {
