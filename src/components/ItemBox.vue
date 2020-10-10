@@ -1,18 +1,18 @@
 <template>
     <div class="item-box">
-        <img :src="itemProps.imgUrl" />
-        <a class="msk" :href="itemProps.itemUrl"></a>
+        <img :src="itemProp.imgUrl" />
+        <a class="msk" :href="itemProp.itemUrl"></a>
         <div class="bottom">
             <span class="icon-headset"></span>
-            <span>{{ itemProps.number }}万</span>
-            <a class="icon-play" :href="itemProps.itemPlay"></a>
+            <span>{{ itemProp.number }}万</span>
+            <a class="icon-play" :href="itemProp.itemPlay"></a>
         </div>
         <p class="dec">
-            <a :href="itemProps.itemUrl">{{ itemProps.text }}</a>
+            <a :href="itemProp.itemUrl">{{ itemProp.text }}</a>
         </p>
         <p>
             <span></span>
-            <a :href="itemProps.artistUrl"></a>
+            <a :href="itemProp.artistUrl"></a>
             <span></span>
         </p>
     </div>
@@ -24,7 +24,7 @@ export default {
         return {};
     },
     props: {
-        itemProps: {
+        itemProp: {
             imgUrl: String,
             itemUrl: String,
             number: Number,
