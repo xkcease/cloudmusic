@@ -23,74 +23,78 @@
     </a-row>
 </template>
 
-
 <script>
-    export default {
-        props: {
-            tapProp: {
-                title: String,
-                list: Boolean
-            }
-        }
-    };
-</script>
-
-
-<style lang="scss" scoped>
-    .wrap-discover {
-        .home-tap {
-            margin-bottom: 20px;
-            border-bottom: 2px solid#C10D0C;
-            padding-bottom: 6px;
-
-            .bg-index {
-                background: url(../../assets/index.png) no-repeat;
-            }
-
-            .w-hot {
-                font-size: 20px;
-                line-height: 28px;
-                background-position: -225px -156px;
-
-                .hot {
-                    margin-left: 34px;
-                    color: #333;
-                }
-            }
-
-            .tap {
-                font-size: 12px;
-                margin-left: 18px;
-                padding-top: 7px;
-
-                a {
-                    color: #666;
-                }
-
-                span {
-                    color: #c2c2c2;
-                    margin: 0 10px;
-                }
-            }
-
-            .w-more {
-                padding-top: 7px;
-                padding-left: 10px;
-
-                .more {
-                    font-size: 12px;
-                    color: #666;
-                }
-
-                .more-arrow {
-                    display: inline-block;
-                    width: 12px;
-                    height: 12px;
-                    margin-left: 3px;
-                    background-position: 0 -240px;
-                    vertical-align: middle;
-                }
-            }
+export default {
+    props: {
+        tapProp: {
+            title: String,
+            list: Boolean
         }
     }
+};
+</script>
+
+<style lang="scss">
+.home-tap {
+    margin-bottom: 20px;
+    border-bottom: 2px solid #c10d0c;
+    padding-bottom: 6px;
+
+    .bg-index {
+        background: url(../../assets/index.png) no-repeat;
+    }
+
+    .w-hot {
+        font-size: 20px;
+        line-height: 28px;
+        background-position: -225px -156px;
+
+        .hot {
+            margin-left: 34px;
+            color: #333;
+        }
+    }
+
+    .tap {
+        font-size: 12px;
+        margin-left: 18px;
+        padding-top: 7px;
+
+        a {
+            color: #666;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        span {
+            color: #c2c2c2;
+            margin: 0 13px;
+        }
+    }
+
+    .w-more {
+        padding-top: 7px;
+        padding-left: 10px;
+
+        .more {
+            font-size: 12px;
+            color: #666;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .more-arrow {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin-left: 3px;
+            background-position: 0 -240px;
+            vertical-align: middle;
+        }
+    }
+}
 </style>

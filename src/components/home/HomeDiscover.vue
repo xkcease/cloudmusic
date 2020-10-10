@@ -1,18 +1,17 @@
 <template>
     <div class="wrap-discover">
-        <home-tap :tapProp="tapProp[0]"></home-tap>
+        <HomeTap :tapProp="tapProp[0]" />
         <ul class="wrap-item">
             <li
                 class="li-item"
                 v-for="itemProp in itemProps"
                 :key="itemProp.imgUrl"
             >
-                <item-box :itemProp="itemProp"></item-box>
+                <ItemBox :itemProp="itemProp" />
             </li>
         </ul>
     </div>
 </template>
-
 
 <script>
 import ItemBox from '../ItemBox';
@@ -46,7 +45,6 @@ export default {
     }
 };
 </script>
-
 
 <style lang="scss" scoped>
 .wrap-discover {
