@@ -15,14 +15,18 @@
             <template v-slot:nextArrow>
                 <a class="r-arrow arrow" href="#"></a>
             </template>
-            <div class="m-wrap" v-for="imgUrl in imgUrls" :key="imgUrl">
-                <a href="#">
-                    <img class="m-item" :src="imgUrl" />
-                </a>
+            <div
+                class="m-wrap"
+                v-for="banner in banners"
+                :key="banner.imageUrl"
+            >
+                <router-link :to="getUrl(banner)">
+                    <img class="m-item" :src="banner.imageUrl" />
+                </router-link>
             </div>
         </a-carousel>
         <div class="download">
-            <a href="#" class="btn">下载客户端</a>
+            <router-link class="btn" to="/download">下载客户端</router-link>
             <p>PC 安卓 iPhone WP iPad Mac 六大客户端</p>
         </div>
         <div class="bg-blur" :style="bg"></div>
@@ -34,18 +38,38 @@ export default {
     data() {
         return {
             bg: {
-                backgroundImage: 'url(' + this.imgUrls[0] + ')',
+                backgroundImage: '',
                 backgroundSize: '6000px',
                 backgroundPosition: 'center center'
-            }
+            },
+            banners: []
         };
     },
     props: {
-        imgUrls: Array
+        bannersProp: Array
     },
     methods: {
         bgChange(from, to) {
-            this.bg.backgroundImage = 'url(' + this.imgUrls[to] + ')';
+            this.bg.backgroundImage = 'url(' + this.banners[to].imageUrl + ')';
+        },
+        getUrl(banner) {
+            switch (banner.targetType) {
+                case 1:
+                    return './song?id=' + banner.targetId;
+                case 10:
+                    return '/album?album=' + banner.targetId;
+                case 1004:
+                    return '/mv?mv=' + banner.targetId;
+                case 3000:
+                    return banner.url;
+                default:
+                    return;
+            }
+        }
+    },
+    watch: {
+        bannersProp() {
+            this.banners = this.bannersProp;
         }
     }
 };
@@ -63,6 +87,8 @@ export default {
     .bg-blur {
         width: 100%;
         filter: blur(100px);
+        background-size: '6000px';
+        background-position: 'center center';
     }
 
     .carousel {
