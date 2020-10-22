@@ -5,67 +5,76 @@
             <a-col
                 :span="8"
                 class="list-msk"
-                v-for="col in colList"
+                v-for="(col, colIndex) in colList"
                 :key="col.text"
             >
                 <dt>
                     <div class="list-img-msk">
                         <img :src="col.imgUrl" class="list-img" />
-                        <a href="#" class="list-img-link"></a>
+                        <router-link
+                            :to="col.url"
+                            class="list-img-link"
+                        ></router-link>
                     </div>
                     <div class="list-dec">
-                        <a href="#" class="list-text">{{ col.text }}</a>
-                        <a href="#" class="list-index index-play">播放</a>
-                        <a href="#" class="list-index index-collect">收藏</a>
+                        <router-link :to="col.url" class="list-text">{{
+                            col.text
+                        }}</router-link>
+                        <a href="javascript:;" class="list-index index-play"
+                            >播放</a
+                        >
+                        <a href="javascript:;" class="list-index index-collect"
+                            >收藏</a
+                        >
                     </div>
                 </dt>
                 <dd>
                     <ol class="list-item-msk">
                         <li
                             class="list-item"
-                            v-for="item in col.list"
-                            :key="item.text"
-                            @mouseenter="optionEnter(col.index, item.order)"
-                            @mouseleave="optionLeave(col.index, item.order)"
+                            v-for="(item, itemIndex) in col.list"
+                            :key="item.id"
+                            @mouseenter="optionEnter(colIndex, itemIndex)"
+                            @mouseleave="optionLeave(colIndex, itemIndex)"
                         >
                             <span
                                 class="list-item-order"
                                 :class="{
-                                    'order-color': redColor(item.order),
-                                    'order-last': orderLast(item.order)
+                                    'order-color': redColor(itemIndex + 1),
+                                    'order-last': orderLast(itemIndex + 1)
                                 }"
-                                >{{ item.order }}</span
+                                >{{ itemIndex + 1 }}</span
                             >
-                            <a
+                            <router-link
                                 class="list-item-text"
-                                :href="item.url"
+                                :to="'/song?id=' + item.id"
                                 :class="{
                                     'option-show':
-                                        isOptionShow[col.index][item.order - 1]
+                                        isOptionShow[colIndex][itemIndex]
                                 }"
-                                >{{ item.text }}</a
-                            >
+                                >{{ item.name }}
+                            </router-link>
                             <div
                                 class="list-item-select"
-                                v-show="isOptionShow[col.index][item.order - 1]"
+                                v-show="isOptionShow[colIndex][itemIndex]"
                             >
                                 <a
                                     class="list-index list-item-option list-item-option-play"
-                                    href="#"
+                                    href="javascript:;"
                                 ></a>
                                 <a
                                     class="list-icon list-item-option list-item-option-add"
-                                    href="#"
+                                    href="javascript:;"
                                 ></a>
                                 <a
                                     class="list-index list-item-option list-item-option-collect"
-                                    href="#"
+                                    href="javascript:;"
                                 ></a>
                             </div>
                         </li>
                     </ol>
                     <div class="list-more">
-                        <a href="#">查看全部></a>
+                        <router-link :to="col.url">查看全部></router-link>
                     </div>
                 </dd>
             </a-col>
@@ -88,22 +97,22 @@ export default {
             },
             colList: [
                 {
-                    index: 0,
                     text: '云音乐飙升榜',
+                    url: '/toplist/?id=19723756',
                     imgUrl: require('../../assets/toplist_up.png'),
-                    list: this.listProp.upList
+                    list: []
                 },
                 {
-                    index: 1,
                     text: '云音乐新歌榜',
+                    url: '/toplist?id=3779629',
                     imgUrl: require('../../assets/toplist_new.png'),
-                    list: this.listProp.newList
+                    list: []
                 },
                 {
-                    index: 2,
                     text: '网易原创歌曲榜',
+                    url: '/toplist?id=2884035',
                     imgUrl: require('../../assets/toplist_produce.png'),
-                    list: this.listProp.produceList
+                    list: []
                 }
             ],
             isOptionShow: [
@@ -168,11 +177,22 @@ export default {
 
             return false;
         },
-        optionEnter(index, order) {
-            this.$set(this.isOptionShow[index], order - 1, true);
+        optionEnter(colIndex, itemIndex) {
+            this.$set(this.isOptionShow[colIndex], itemIndex, true);
         },
-        optionLeave(index, order) {
-            this.$set(this.isOptionShow[index], order - 1, false);
+        optionLeave(colIndex, itemIndex) {
+            this.$set(this.isOptionShow[colIndex], itemIndex, false);
+        }
+    },
+    watch: {
+        'listProp.upList'() {
+            this.colList[0].list = this.listProp.upList;
+        },
+        'listProp.newList'() {
+            this.colList[1].list = this.listProp.newList;
+        },
+        'listProp.produceList'() {
+            this.colList[2].list = this.listProp.produceList;
         }
     }
 };
