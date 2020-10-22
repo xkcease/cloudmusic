@@ -1,11 +1,11 @@
 <template>
     <div class="wrap-discover">
-        <HomeTap :tapProp="tapProp[0]" />
+        <HomeTap :tapProp="tapProp" />
         <ul class="wrap-item">
             <li
                 class="li-item"
                 v-for="itemProp in itemProps"
-                :key="itemProp.imgUrl"
+                :key="itemProp.id"
             >
                 <ItemBox :itemProp="itemProp" />
             </li>
@@ -20,20 +20,10 @@ import HomeTap from './HomeTap';
 export default {
     data() {
         return {
-            tapProp: [
-                {
-                    title: '热门推荐',
-                    list: true
-                },
-                {
-                    title: '新碟上架',
-                    list: false
-                },
-                {
-                    title: '榜单',
-                    list: false
-                }
-            ]
+            tapProp: {
+                title: '热门推荐',
+                list: true
+            }
         };
     },
     components: {
@@ -49,12 +39,14 @@ export default {
 <style lang="scss" scoped>
 .wrap-discover {
     .wrap-item {
+        display: flex;
+        flex-wrap: wrap;
         list-style: none;
         padding: 0;
 
         .li-item {
             display: inline-block;
-            margin-bottom: 30px;
+            margin-bottom: 45px;
 
             &:nth-child(n + 2):nth-child(-n + 4),
             &:nth-child(n + 6):nth-child(-n + 8) {
