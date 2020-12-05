@@ -3,7 +3,16 @@ import App from './App';
 import router from './router';
 import store from './store';
 
-import { Button, Layout, Row, Col, Menu, Input, Icon } from 'ant-design-vue';
+import {
+    Button,
+    Layout,
+    Row,
+    Col,
+    Menu,
+    Input,
+    Icon,
+    Carousel
+} from 'ant-design-vue';
 
 Vue.use(Button);
 Vue.use(Layout);
@@ -12,6 +21,7 @@ Vue.use(Col);
 Vue.use(Menu);
 Vue.use(Input);
 Vue.use(Icon);
+Vue.use(Carousel);
 
 Vue.config.productionTip = false;
 

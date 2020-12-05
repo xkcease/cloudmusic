@@ -1,19 +1,22 @@
 <template>
     <div id="app">
-        <topbar></topbar>
+        <Topbar />
         <router-view />
-        <foot></foot>
+        <Foot />
+        <Player />
     </div>
 </template>
 
 <script>
     import Topbar from './components/Topbar';
     import Foot from './components/Foot';
+    import Player from './components/Player';
 
     export default {
         components: {
             Topbar,
             Foot,
+            Player
         }
     }
 </script>
